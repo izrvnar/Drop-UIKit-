@@ -13,6 +13,10 @@
 		907E2A94283820BF009740B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 907E2A92283820BF009740B1 /* Main.storyboard */; };
 		907E2A96283820C2009740B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 907E2A95283820C2009740B1 /* Assets.xcassets */; };
 		907E2A99283820C2009740B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 907E2A97283820C2009740B1 /* LaunchScreen.storyboard */; };
+		907E2AA1283822F5009740B1 /* dropIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AA0283822F5009740B1 /* dropIcon.jpg */; };
+		907E2AA32838240F009740B1 /* calender.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AA22838240F009740B1 /* calender.png */; };
+		907E2AA728382550009740B1 /* user_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AA628382550009740B1 /* user_profile.png */; };
+		907E2AAA28383E3F009740B1 /* ClothingDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AA828383E3F009740B1 /* ClothingDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		907E2A95283820C2009740B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		907E2A98283820C2009740B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		907E2A9A283820C2009740B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		907E2AA0283822F5009740B1 /* dropIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dropIcon.jpg; sourceTree = "<group>"; };
+		907E2AA22838240F009740B1 /* calender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calender.png; sourceTree = "<group>"; };
+		907E2AA628382550009740B1 /* user_profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_profile.png; sourceTree = "<group>"; };
+		907E2AA928383E3F009740B1 /* ClothingDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClothingDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,35 @@
 		907E2A8B283820BF009740B1 /* IvanZrvnarFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				907E2AA828383E3F009740B1 /* ClothingDataModel.xcdatamodeld */,
 				907E2A8C283820BF009740B1 /* AppDelegate.swift */,
 				907E2A8E283820BF009740B1 /* SceneDelegate.swift */,
 				907E2A90283820BF009740B1 /* ViewController.swift */,
-				907E2A92283820BF009740B1 /* Main.storyboard */,
+				907E2AA4283824CB009740B1 /* ViewControllers */,
 				907E2A95283820C2009740B1 /* Assets.xcassets */,
 				907E2A97283820C2009740B1 /* LaunchScreen.storyboard */,
 				907E2A9A283820C2009740B1 /* Info.plist */,
+				907E2AA5283824FF009740B1 /* Icons */,
 			);
 			path = IvanZrvnarFinalProject;
+			sourceTree = "<group>";
+		};
+		907E2AA4283824CB009740B1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				907E2A92283820BF009740B1 /* Main.storyboard */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		907E2AA5283824FF009740B1 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				907E2AA628382550009740B1 /* user_profile.png */,
+				907E2AA0283822F5009740B1 /* dropIcon.jpg */,
+				907E2AA22838240F009740B1 /* calender.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +153,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907E2AA728382550009740B1 /* user_profile.png in Resources */,
 				907E2A99283820C2009740B1 /* LaunchScreen.storyboard in Resources */,
+				907E2AA1283822F5009740B1 /* dropIcon.jpg in Resources */,
+				907E2AA32838240F009740B1 /* calender.png in Resources */,
 				907E2A96283820C2009740B1 /* Assets.xcassets in Resources */,
 				907E2A94283820BF009740B1 /* Main.storyboard in Resources */,
 			);
@@ -139,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				907E2A91283820BF009740B1 /* ViewController.swift in Sources */,
+				907E2AAA28383E3F009740B1 /* ClothingDataModel.xcdatamodeld in Sources */,
 				907E2A8D283820BF009740B1 /* AppDelegate.swift in Sources */,
 				907E2A8F283820BF009740B1 /* SceneDelegate.swift in Sources */,
 			);
@@ -356,6 +388,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		907E2AA828383E3F009740B1 /* ClothingDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				907E2AA928383E3F009740B1 /* ClothingDataModel.xcdatamodel */,
+			);
+			currentVersion = 907E2AA928383E3F009740B1 /* ClothingDataModel.xcdatamodel */;
+			path = ClothingDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 907E2A81283820BF009740B1 /* Project object */;
 }
