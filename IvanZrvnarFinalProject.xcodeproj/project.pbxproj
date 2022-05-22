@@ -64,15 +64,13 @@
 		907E2A8B283820BF009740B1 /* IvanZrvnarFinalProject */ = {
 			isa = PBXGroup;
 			children = (
-				907E2AA828383E3F009740B1 /* ClothingDataModel.xcdatamodeld */,
-				907E2A8C283820BF009740B1 /* AppDelegate.swift */,
-				907E2A8E283820BF009740B1 /* SceneDelegate.swift */,
-				907E2A90283820BF009740B1 /* ViewController.swift */,
+				907E2AAC283A97E6009740B1 /* Storyboard */,
 				907E2AA4283824CB009740B1 /* ViewControllers */,
+				907E2AAB283A97D1009740B1 /* Data Model */,
 				907E2A95283820C2009740B1 /* Assets.xcassets */,
-				907E2A97283820C2009740B1 /* LaunchScreen.storyboard */,
 				907E2A9A283820C2009740B1 /* Info.plist */,
 				907E2AA5283824FF009740B1 /* Icons */,
+				907E2AAD283A981A009740B1 /* Delegates */,
 			);
 			path = IvanZrvnarFinalProject;
 			sourceTree = "<group>";
@@ -80,7 +78,7 @@
 		907E2AA4283824CB009740B1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				907E2A92283820BF009740B1 /* Main.storyboard */,
+				907E2A90283820BF009740B1 /* ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -93,6 +91,32 @@
 				907E2AA22838240F009740B1 /* calender.png */,
 			);
 			path = Icons;
+			sourceTree = "<group>";
+		};
+		907E2AAB283A97D1009740B1 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				907E2AA828383E3F009740B1 /* ClothingDataModel.xcdatamodeld */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		907E2AAC283A97E6009740B1 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				907E2A92283820BF009740B1 /* Main.storyboard */,
+				907E2A97283820C2009740B1 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		907E2AAD283A981A009740B1 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				907E2A8E283820BF009740B1 /* SceneDelegate.swift */,
+				907E2A8C283820BF009740B1 /* AppDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

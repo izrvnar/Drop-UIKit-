@@ -76,11 +76,40 @@
                             <constraint firstItem="Szy-jl-Y0c" firstAttribute="bottom" secondItem="kzf-gA-ylx" secondAttribute="bottom" id="wyi-2y-ywE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="h4V-eg-hkU"/>
+                    <navigationItem key="navigationItem" id="h4V-eg-hkU">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" style="plain" id="aDZ-HN-ERJ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="z86-21-rrR">
+                                <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                            </button>
+                            <connections>
+                                <segue destination="D2t-BX-UPL" kind="show" id="ZN3-xP-Snu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBr-UA-znU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2092.753623188406" y="-603.34821428571422"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="V0Q-Eu-I34">
+            <objects>
+                <viewController id="D2t-BX-UPL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mdt-YZ-RFV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="LvN-3V-s7j"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gs7-1u-WZY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PO2-LM-lPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2902" y="-608"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="AXH-Di-DMy">
@@ -122,7 +151,11 @@
     </scenes>
     <resources>
         <image name="calender.png" width="36" height="38"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="user_profile.png" width="42" height="42"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
