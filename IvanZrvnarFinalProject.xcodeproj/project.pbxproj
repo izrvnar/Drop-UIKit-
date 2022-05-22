@@ -17,6 +17,7 @@
 		907E2AA32838240F009740B1 /* calender.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AA22838240F009740B1 /* calender.png */; };
 		907E2AA728382550009740B1 /* user_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AA628382550009740B1 /* user_profile.png */; };
 		907E2AAA28383E3F009740B1 /* ClothingDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AA828383E3F009740B1 /* ClothingDataModel.xcdatamodeld */; };
+		907E2AAF283A9BA1009740B1 /* AddDropItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AAE283A9BA1009740B1 /* AddDropItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		907E2AA22838240F009740B1 /* calender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calender.png; sourceTree = "<group>"; };
 		907E2AA628382550009740B1 /* user_profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_profile.png; sourceTree = "<group>"; };
 		907E2AA928383E3F009740B1 /* ClothingDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClothingDataModel.xcdatamodel; sourceTree = "<group>"; };
+		907E2AAE283A9BA1009740B1 /* AddDropItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDropItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		907E2AA4283824CB009740B1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				907E2AAE283A9BA1009740B1 /* AddDropItemViewController.swift */,
 				907E2A90283820BF009740B1 /* ViewController.swift */,
 			);
 			path = ViewControllers;
@@ -195,6 +198,7 @@
 			files = (
 				907E2A91283820BF009740B1 /* ViewController.swift in Sources */,
 				907E2AAA28383E3F009740B1 /* ClothingDataModel.xcdatamodeld in Sources */,
+				907E2AAF283A9BA1009740B1 /* AddDropItemViewController.swift in Sources */,
 				907E2A8D283820BF009740B1 /* AppDelegate.swift in Sources */,
 				907E2A8F283820BF009740B1 /* SceneDelegate.swift in Sources */,
 			);
