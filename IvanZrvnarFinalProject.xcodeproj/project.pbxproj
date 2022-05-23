@@ -21,6 +21,7 @@
 		907E2AB1283B16DE009740B1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AB0283B16DE009740B1 /* CoreDataStack.swift */; };
 		907E2AB3283B2236009740B1 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AB2283B2236009740B1 /* star.png */; };
 		907E2AB5283B2282009740B1 /* bag.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AB4283B2282009740B1 /* bag.png */; };
+		907E2AB7283C1E01009740B1 /* DropTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AB6283C1E01009740B1 /* DropTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		907E2AB0283B16DE009740B1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		907E2AB2283B2236009740B1 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		907E2AB4283B2282009740B1 /* bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bag.png; sourceTree = "<group>"; };
+		907E2AB6283C1E01009740B1 /* DropTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				907E2A92283820BF009740B1 /* Main.storyboard */,
+				907E2AB6283C1E01009740B1 /* DropTableViewCell.swift */,
 				907E2A97283820C2009740B1 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
@@ -213,6 +216,7 @@
 				907E2AB1283B16DE009740B1 /* CoreDataStack.swift in Sources */,
 				907E2A8D283820BF009740B1 /* AppDelegate.swift in Sources */,
 				907E2A8F283820BF009740B1 /* SceneDelegate.swift in Sources */,
+				907E2AB7283C1E01009740B1 /* DropTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
