@@ -18,6 +18,9 @@
 		907E2AA728382550009740B1 /* user_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AA628382550009740B1 /* user_profile.png */; };
 		907E2AAA28383E3F009740B1 /* ClothingDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AA828383E3F009740B1 /* ClothingDataModel.xcdatamodeld */; };
 		907E2AAF283A9BA1009740B1 /* AddDropItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AAE283A9BA1009740B1 /* AddDropItemViewController.swift */; };
+		907E2AB1283B16DE009740B1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AB0283B16DE009740B1 /* CoreDataStack.swift */; };
+		907E2AB3283B2236009740B1 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AB2283B2236009740B1 /* star.png */; };
+		907E2AB5283B2282009740B1 /* bag.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AB4283B2282009740B1 /* bag.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		907E2AA628382550009740B1 /* user_profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_profile.png; sourceTree = "<group>"; };
 		907E2AA928383E3F009740B1 /* ClothingDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClothingDataModel.xcdatamodel; sourceTree = "<group>"; };
 		907E2AAE283A9BA1009740B1 /* AddDropItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDropItemViewController.swift; sourceTree = "<group>"; };
+		907E2AB0283B16DE009740B1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		907E2AB2283B2236009740B1 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		907E2AB4283B2282009740B1 /* bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bag.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,8 @@
 				907E2AA628382550009740B1 /* user_profile.png */,
 				907E2AA0283822F5009740B1 /* dropIcon.jpg */,
 				907E2AA22838240F009740B1 /* calender.png */,
+				907E2AB2283B2236009740B1 /* star.png */,
+				907E2AB4283B2282009740B1 /* bag.png */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -99,6 +107,7 @@
 		907E2AAB283A97D1009740B1 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				907E2AB0283B16DE009740B1 /* CoreDataStack.swift */,
 				907E2AA828383E3F009740B1 /* ClothingDataModel.xcdatamodeld */,
 			);
 			path = "Data Model";
@@ -184,6 +193,8 @@
 				907E2A99283820C2009740B1 /* LaunchScreen.storyboard in Resources */,
 				907E2AA1283822F5009740B1 /* dropIcon.jpg in Resources */,
 				907E2AA32838240F009740B1 /* calender.png in Resources */,
+				907E2AB5283B2282009740B1 /* bag.png in Resources */,
+				907E2AB3283B2236009740B1 /* star.png in Resources */,
 				907E2A96283820C2009740B1 /* Assets.xcassets in Resources */,
 				907E2A94283820BF009740B1 /* Main.storyboard in Resources */,
 			);
@@ -199,6 +210,7 @@
 				907E2A91283820BF009740B1 /* ViewController.swift in Sources */,
 				907E2AAA28383E3F009740B1 /* ClothingDataModel.xcdatamodeld in Sources */,
 				907E2AAF283A9BA1009740B1 /* AddDropItemViewController.swift in Sources */,
+				907E2AB1283B16DE009740B1 /* CoreDataStack.swift in Sources */,
 				907E2A8D283820BF009740B1 /* AppDelegate.swift in Sources */,
 				907E2A8F283820BF009740B1 /* SceneDelegate.swift in Sources */,
 			);
