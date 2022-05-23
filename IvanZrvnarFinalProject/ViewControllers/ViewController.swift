@@ -43,6 +43,18 @@ class ViewController: UIViewController, UITableViewDelegate{
 
     }//: View did load
     
+    //MARK: - Methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addItem"{
+            if let destinationVC = segue.destination as? AddDropItemViewController{
+                destinationVC.coreData = coreDataStack
+                destinationVC.droplist = dropList
+            }
+        }
+        
+    }
+    
 }//: View Controller
 
 
@@ -52,7 +64,7 @@ extension ViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "clothingItemCell", for: indexPath) as! DropTableViewCell
         let item = dropList[indexPath.row]
         
-        cell.nameLabel?.text = item.name
+        cell.nameLabel?.text = ("\(item.brand ?? "") \(item.name ?? "")")
         cell.dateLabel?.text = dateFormatter.string(from: item.dateReleased ?? Date())
         
         

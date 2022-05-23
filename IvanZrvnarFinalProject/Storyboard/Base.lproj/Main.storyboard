@@ -113,7 +113,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="lEg-Tw-8IX">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
-                                <segue destination="D2t-BX-UPL" kind="show" id="5H9-45-vgH"/>
+                                <segue destination="D2t-BX-UPL" kind="show" identifier="addItem" id="5H9-45-vgH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -290,6 +290,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gs7-1u-WZY"/>
+                    <connections>
+                        <outlet property="brandInput" destination="Gce-IU-ycX" id="UL8-Yw-gp3"/>
+                        <outlet property="dateInput" destination="dz1-D5-flk" id="tSf-Fv-MBE"/>
+                        <outlet property="imageInput" destination="FLx-NG-0uD" id="bgC-0r-IOC"/>
+                        <outlet property="linkInput" destination="iXT-01-Uv7" id="5Fa-ek-Yba"/>
+                        <outlet property="nameInput" destination="GnL-1c-pEi" id="yBc-cH-1ng"/>
+                        <outlet property="noteInput" destination="NN6-rZ-ndT" id="hei-RY-GWI"/>
+                        <outlet property="typePicker" destination="kq4-DH-pa8" id="Q4v-ao-czZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PO2-LM-lPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
