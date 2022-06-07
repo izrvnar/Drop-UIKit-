@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate{
+class ViewController: UIViewController{
     
     
     //MARK: - Properties
@@ -108,5 +108,31 @@ class ViewController: UIViewController, UITableViewDelegate{
 
 
 //MARK: - Extensions
+
+extension ViewController: UITableViewDelegate{
+    
+    // creating the ability to drag and delete a contact
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteItem = UIContextualAction(style: .destructive, title: "Remove"){ [self](_,_, completionHandler) in
+            let selected = dropList[indexPath.row]
+            coreDataStack.managedContext.delete(selected)
+            coreDataStack.saveContext()
+            
+            dropList.remove(at: indexPath.row)
+            createDataSnapShot()
+        
+       
+            completionHandler(true)
+         
+
+        }
+        deleteItem.image = UIImage(systemName: "scissors")
+        deleteItem.backgroundColor = UIColor(named: "red")
+
+        let config = UISwipeActionsConfiguration(actions: [deleteItem])
+        return config
+    }
+    
+}
 
 

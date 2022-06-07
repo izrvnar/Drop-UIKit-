@@ -119,27 +119,27 @@ extension AddDropItemViewController: UIPickerViewDelegate{
 //extension AddDropItemViewController: UIImagePickerControllerDelegate{
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 //        picker.dismiss(animated: true)
-//        
+//
 //        guard let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
 //            return
 //        }
 //        let dataImage = chosenImage.pngData()
-//        
-//     
+//
+//
 //        let context = self.coreDataStack.managedContext
-//        
+//
 //        guard let user = NSEntityDescription.insertNewObject(forEntityName: "image", into: context) as? ClothingItem else {
 //            return
 //        }
 //        user.image = dataImage
-//        
-//        
+//
+//
 //        do {
 //            try context.save()
 //        } catch {
 //            print("Could not save. \(error), \(error.localizedDescription)")
 //        }
 //
-//        
+//
 //    }
 //}
