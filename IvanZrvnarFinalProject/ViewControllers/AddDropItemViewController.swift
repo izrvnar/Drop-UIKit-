@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 class AddDropItemViewController: UIViewController {
     
     //MARK: - Properties
     var droplist = [ClothingItem]()
     var typeResults = ["Shoes", "Shirt", "Pants", "Accessories", "Other"]
-    var coreData : CoreDataStack!
+    var coreDataStack : CoreDataStack!
+    var selectedType = "Shoes"
     
     
     
@@ -25,12 +27,23 @@ class AddDropItemViewController: UIViewController {
     @IBOutlet var linkInput: UITextField!
     @IBOutlet var noteInput: UITextField!
     @IBOutlet var imageInput: UIImageView!
+    @IBAction func saveItem(_ sender: Any) {
+        save()
+        
+        let delay = 1.5
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
+            self.navigationController?.popViewController(animated: true)
+        })
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         typePicker.dataSource = self
         typePicker.delegate = self
+        
+        
         
 
 
@@ -39,19 +52,26 @@ class AddDropItemViewController: UIViewController {
     
     //MARK: - Methods
     func save(){
-        let newDrop = ClothingItem(context: self.coreData.managedContext)
+        let newDrop = ClothingItem(context: coreDataStack.managedContext)
         newDrop.name = nameInput.text ?? ""
         newDrop.dateReleased = dateInput.date
         newDrop.brand = brandInput.text ?? ""
         newDrop.notes = noteInput.text ?? ""
         newDrop.urlLink = linkInput.text ?? ""
+        
+        //TODO: Add image and type to the data. The image extension is complete but not sure if working
+        newDrop.type = selectedType
+        
+        
+        
 
-        self.coreData.saveContext()
         
-        self.droplist.append(newDrop)
+        coreDataStack.saveContext()
         
-            
+        droplist.append(newDrop)
+    
     }
+    
     
     
     
@@ -67,6 +87,8 @@ class AddDropItemViewController: UIViewController {
     */
 
 }
+
+//MARK: -Extensions
 
 extension AddDropItemViewController: UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -84,4 +106,40 @@ extension AddDropItemViewController: UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         typeResults[row]
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedType = typeResults[row]
+        print(selectedType)
+    }
+    
 }
+
+
+
+// setting the image to the core data
+//extension AddDropItemViewController: UIImagePickerControllerDelegate{
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        picker.dismiss(animated: true)
+//        
+//        guard let chosenImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
+//            return
+//        }
+//        let dataImage = chosenImage.pngData()
+//        
+//     
+//        let context = self.coreDataStack.managedContext
+//        
+//        guard let user = NSEntityDescription.insertNewObject(forEntityName: "image", into: context) as? ClothingItem else {
+//            return
+//        }
+//        user.image = dataImage
+//        
+//        
+//        do {
+//            try context.save()
+//        } catch {
+//            print("Could not save. \(error), \(error.localizedDescription)")
+//        }
+//
+//        
+//    }
+//}

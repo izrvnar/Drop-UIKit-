@@ -26,6 +26,40 @@
             </objects>
             <point key="canvasLocation" x="1183" y="68"/>
         </scene>
+        <!--LinkViewController-->
+        <scene sceneID="qN6-MN-NLe">
+            <objects>
+                <viewController title="LinkViewController" id="SsV-XL-NCs" customClass="LinkViewController" customModule="IvanZrvnarFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ki-QM-kee">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6m-8L-C7X">
+                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8dG-2k-9Zv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8dG-2k-9Zv" firstAttribute="trailing" secondItem="s6m-8L-C7X" secondAttribute="trailing" id="3nl-Is-OW5"/>
+                            <constraint firstItem="s6m-8L-C7X" firstAttribute="leading" secondItem="8dG-2k-9Zv" secondAttribute="leading" id="Fwz-U7-5w8"/>
+                            <constraint firstItem="8dG-2k-9Zv" firstAttribute="bottom" secondItem="s6m-8L-C7X" secondAttribute="bottom" id="nCl-I4-udn"/>
+                            <constraint firstItem="s6m-8L-C7X" firstAttribute="top" secondItem="0ki-QM-kee" secondAttribute="topMargin" id="wx0-mE-7PN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="s6m-8L-C7X" id="lJJ-HN-jbx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ART-4l-YWQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2868" y="-1368"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="vs7-yR-ejR">
             <objects>
@@ -70,6 +104,9 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="56" height="50"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="bag.png"/>
+                                                                    <connections>
+                                                                        <segue destination="SsV-XL-NCs" kind="showDetail" identifier="itemLink" id="IET-K8-g8S"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsl-6h-8ui" userLabel="addToClosetButton">
                                                                     <rect key="frame" x="76" y="0.0" width="57" height="50"/>
@@ -123,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBr-UA-znU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2092.753623188406" y="-603.34821428571422"/>
+            <point key="canvasLocation" x="1939" y="-608"/>
         </scene>
         <!--Add Drop Item View Controller-->
         <scene sceneID="V0Q-Eu-I34">
@@ -140,17 +177,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="828"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Mug-EV-PbC">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="828"/>
+                                                <rect key="frame" x="15" y="0.0" width="399" height="828"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.shutter.button" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FLx-NG-0uD">
-                                                        <rect key="frame" x="0.0" y="-2.5" width="414" height="201"/>
+                                                        <rect key="frame" x="0.0" y="-2.5" width="399" height="201"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="jut-Hb-lOa"/>
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="Tu5-Dw-yxR" userLabel="NameStackView">
-                                                        <rect key="frame" x="0.0" y="210" width="394" height="34"/>
+                                                        <rect key="frame" x="0.0" y="210" width="379" height="34"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzk-Qg-1XG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="49.5" height="34"/>
@@ -159,14 +196,14 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GnL-1c-pEi">
-                                                                <rect key="frame" x="85.5" y="0.0" width="308.5" height="34"/>
+                                                                <rect key="frame" x="85.5" y="0.0" width="293.5" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="uuc-Mo-O3Y" userLabel="BrandStackView">
-                                                        <rect key="frame" x="0.0" y="254" width="394" height="34"/>
+                                                        <rect key="frame" x="0.0" y="254" width="379" height="34"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46g-V7-lGx">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
@@ -175,14 +212,14 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gce-IU-ycX">
-                                                                <rect key="frame" x="86" y="0.0" width="308" height="34"/>
+                                                                <rect key="frame" x="86" y="0.0" width="293" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMa-iH-Ebs" userLabel="DateStackView">
-                                                        <rect key="frame" x="0.0" y="298" width="414" height="216"/>
+                                                        <rect key="frame" x="0.0" y="298" width="399" height="216"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTe-99-EWg">
                                                                 <rect key="frame" x="0.0" y="0.0" width="40.5" height="216"/>
@@ -191,12 +228,12 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dz1-D5-flk">
-                                                                <rect key="frame" x="40.5" y="0.0" width="373.5" height="216"/>
+                                                                <rect key="frame" x="40.5" y="0.0" width="358.5" height="216"/>
                                                             </datePicker>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Gk-31-9bd" userLabel="TypeStackView">
-                                                        <rect key="frame" x="0.0" y="524" width="414" height="216"/>
+                                                        <rect key="frame" x="0.0" y="524" width="399" height="216"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJy-27-KbS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="42" height="216"/>
@@ -205,12 +242,12 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kq4-DH-pa8">
-                                                                <rect key="frame" x="42" y="0.0" width="372" height="216"/>
+                                                                <rect key="frame" x="42" y="0.0" width="357" height="216"/>
                                                             </pickerView>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="66" translatesAutoresizingMaskIntoConstraints="NO" id="VQ8-OU-8Kq" userLabel="LinkStackView">
-                                                        <rect key="frame" x="0.0" y="750" width="394" height="34"/>
+                                                        <rect key="frame" x="0.0" y="750" width="379" height="34"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Link:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3a-2p-5j8">
                                                                 <rect key="frame" x="0.0" y="0.0" width="36" height="34"/>
@@ -219,14 +256,14 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iXT-01-Uv7">
-                                                                <rect key="frame" x="102" y="0.0" width="292" height="34"/>
+                                                                <rect key="frame" x="102" y="0.0" width="277" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="6Gb-Hc-gWK" userLabel="NoteStackView">
-                                                        <rect key="frame" x="0.0" y="794" width="394" height="34"/>
+                                                        <rect key="frame" x="0.0" y="794" width="379" height="34"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNA-pP-2Hp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
@@ -235,7 +272,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NN6-rZ-ndT">
-                                                                <rect key="frame" x="112" y="0.0" width="282" height="34"/>
+                                                                <rect key="frame" x="112" y="0.0" width="267" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -262,7 +299,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="Mug-EV-PbC" firstAttribute="leading" secondItem="CS9-sJ-Egb" secondAttribute="leading" id="8Tv-jo-Pgb"/>
+                                            <constraint firstItem="Mug-EV-PbC" firstAttribute="leading" secondItem="CS9-sJ-Egb" secondAttribute="leading" constant="15" id="8Tv-jo-Pgb"/>
                                             <constraint firstItem="Mug-EV-PbC" firstAttribute="top" secondItem="CS9-sJ-Egb" secondAttribute="top" id="HaK-jQ-G2O"/>
                                             <constraint firstAttribute="trailing" secondItem="Mug-EV-PbC" secondAttribute="trailing" id="IyN-VV-ri1"/>
                                             <constraint firstAttribute="bottom" secondItem="Mug-EV-PbC" secondAttribute="bottom" id="MRS-Fv-xIJ"/>
@@ -289,7 +326,13 @@
                             <constraint firstItem="LvN-3V-s7j" firstAttribute="trailing" secondItem="FKP-kA-DEf" secondAttribute="trailing" id="pbh-zD-Hcz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gs7-1u-WZY"/>
+                    <navigationItem key="navigationItem" id="gs7-1u-WZY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="bgL-Hh-BVN">
+                            <connections>
+                                <action selector="saveItem:" destination="D2t-BX-UPL" id="ihN-SH-NMv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="brandInput" destination="Gce-IU-ycX" id="UL8-Yw-gp3"/>
                         <outlet property="dateInput" destination="dz1-D5-flk" id="tSf-Fv-MBE"/>

@@ -22,6 +22,7 @@
 		907E2AB3283B2236009740B1 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AB2283B2236009740B1 /* star.png */; };
 		907E2AB5283B2282009740B1 /* bag.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AB4283B2282009740B1 /* bag.png */; };
 		907E2AB7283C1E01009740B1 /* DropTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AB6283C1E01009740B1 /* DropTableViewCell.swift */; };
+		907E2AB9283C51B6009740B1 /* LinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AB8283C51B6009740B1 /* LinkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		907E2AB2283B2236009740B1 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		907E2AB4283B2282009740B1 /* bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bag.png; sourceTree = "<group>"; };
 		907E2AB6283C1E01009740B1 /* DropTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropTableViewCell.swift; sourceTree = "<group>"; };
+		907E2AB8283C51B6009740B1 /* LinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				907E2AAE283A9BA1009740B1 /* AddDropItemViewController.swift */,
 				907E2A90283820BF009740B1 /* ViewController.swift */,
+				907E2AB8283C51B6009740B1 /* LinkViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907E2AB9283C51B6009740B1 /* LinkViewController.swift in Sources */,
 				907E2A91283820BF009740B1 /* ViewController.swift in Sources */,
 				907E2AAA28383E3F009740B1 /* ClothingDataModel.xcdatamodeld in Sources */,
 				907E2AAF283A9BA1009740B1 /* AddDropItemViewController.swift in Sources */,

@@ -15,6 +15,8 @@ class ViewController: UIViewController, UITableViewDelegate{
     
     // array of clothes
     var dropList = [ClothingItem]()
+    var clothingItem = ClothingItem()
+    let today = Date()
     
     //date formatter for label
     var dateFormatter: DateFormatter = {
@@ -29,6 +31,41 @@ class ViewController: UIViewController, UITableViewDelegate{
     @IBOutlet var tableView: UITableView!
     
     
+    //MARK: - Data Source
+    private lazy var tableDataSource = UITableViewDiffableDataSource<Int, ClothingItem>(tableView: tableView){
+        tableView, indexPath, clothingItem in
+        let cell = tableView.dequeueReusableCell(withIdentifier: "clothingItemCell", for: indexPath) as! DropTableViewCell
+        cell.nameLabel.text = clothingItem.name
+        cell.dateLabel.text = "\(clothingItem.dateReleased ?? self.today)"
+        
+        
+        
+        return cell
+    }
+    
+    func createDataSnapShot(){
+        var snapshot = NSDiffableDataSourceSnapshot<Int, ClothingItem>()
+        snapshot.appendSections([.max])
+        snapshot.appendItems(dropList, toSection: .max)
+        tableDataSource.apply(snapshot)
+    }
+    
+    func fetchDrop(){
+        let fetchRequest  = ClothingItem.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateReleased", ascending: true)]
+        do{
+            dropList = try coreDataStack.managedContext.fetch(fetchRequest)
+        }catch {
+            print("There was an error fetching the droplist: \(error.localizedDescription)")
+
+        }
+        DispatchQueue.main.async {
+            self.createDataSnapShot()
+        }
+    }
+
+   
+    
 
     //MARK: - View did load
     override func viewDidLoad() {
@@ -36,19 +73,31 @@ class ViewController: UIViewController, UITableViewDelegate{
         
         // delegate methods
         tableView.delegate = self
-        tableView.dataSource = self
+      
         
         // insert fetch clothing item function
         
 
     }//: View did load
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchDrop()
+        tableView.reloadData()
+        
+        // printing the saved location of the core data
+        let docDirect = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print(docDirect
+        )
+        
+    }
+    
     //MARK: - Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItem"{
             if let destinationVC = segue.destination as? AddDropItemViewController{
-                destinationVC.coreData = coreDataStack
+                destinationVC.coreDataStack = coreDataStack
                 destinationVC.droplist = dropList
             }
         }
@@ -59,24 +108,5 @@ class ViewController: UIViewController, UITableViewDelegate{
 
 
 //MARK: - Extensions
-extension ViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "clothingItemCell", for: indexPath) as! DropTableViewCell
-        let item = dropList[indexPath.row]
-        
-        cell.nameLabel?.text = ("\(item.brand ?? "") \(item.name ?? "")")
-        cell.dateLabel?.text = dateFormatter.string(from: item.dateReleased ?? Date())
-        
-        
-        
-    
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dropList.count
-    }
-    
-    
-}
+
 
