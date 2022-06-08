@@ -31,11 +31,11 @@
             <objects>
                 <viewController title="LinkViewController" id="SsV-XL-NCs" customClass="LinkViewController" customModule="IvanZrvnarFinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0ki-QM-kee">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6m-8L-C7X">
-                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -52,6 +52,7 @@
                             <constraint firstItem="s6m-8L-C7X" firstAttribute="top" secondItem="0ki-QM-kee" secondAttribute="topMargin" id="wx0-mE-7PN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="9Qk-7E-sTS"/>
                     <connections>
                         <outlet property="webView" destination="s6m-8L-C7X" id="lJJ-HN-jbx"/>
                     </connections>
@@ -80,10 +81,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X2F-xo-K5c">
-                                                    <rect key="frame" x="198" y="40" width="206" height="117"/>
+                                                    <rect key="frame" x="205" y="40" width="199" height="0.0"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Enz-5a-XWm">
-                                                    <rect key="frame" x="25" y="16" width="133" height="171"/>
+                                                    <rect key="frame" x="25" y="16" width="140" height="171"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg8-Pi-Iyn">
                                                             <rect key="frame" x="0.0" y="0.0" width="83.5" height="20.5"/>
@@ -97,30 +98,34 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tKy-jL-WRh">
-                                                            <rect key="frame" x="0.0" y="121" width="133" height="50"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tKy-jL-WRh">
+                                                            <rect key="frame" x="0.0" y="121" width="140" height="50"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW6-UT-yz0" userLabel="goToLinkButton">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="bag.png"/>
                                                                     <connections>
-                                                                        <segue destination="SsV-XL-NCs" kind="showDetail" identifier="itemLink" id="IET-K8-g8S"/>
+                                                                        <segue destination="SsV-XL-NCs" kind="show" identifier="itemLink" id="hZq-Wl-0W1"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsl-6h-8ui" userLabel="addToClosetButton">
-                                                                    <rect key="frame" x="76" y="0.0" width="57" height="50"/>
+                                                                    <rect key="frame" x="80" y="0.0" width="60" height="50"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="star.png"/>
                                                                 </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="140" id="If9-o0-qrd"/>
+                                                                <constraint firstAttribute="height" constant="50" id="ezc-Ma-MMe"/>
+                                                            </constraints>
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="X2F-xo-K5c" firstAttribute="top" secondItem="yLW-NA-dlU" secondAttribute="top" constant="40" id="5HV-Sd-iJT"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="X2F-xo-K5c" secondAttribute="bottom" constant="47" id="D9Q-aw-NsB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="X2F-xo-K5c" secondAttribute="bottom" constant="200" id="D9Q-aw-NsB"/>
                                                 <constraint firstItem="X2F-xo-K5c" firstAttribute="leading" secondItem="Enz-5a-XWm" secondAttribute="trailing" constant="40" id="LKK-VG-OIj"/>
                                                 <constraint firstItem="Enz-5a-XWm" firstAttribute="leading" secondItem="yLW-NA-dlU" secondAttribute="leadingMargin" constant="5" id="UWa-Tw-G5V"/>
                                                 <constraint firstAttribute="trailing" secondItem="X2F-xo-K5c" secondAttribute="trailing" constant="10" id="ofI-ay-QqL"/>
@@ -129,8 +134,10 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="addToCloset" destination="jsl-6h-8ui" id="bvG-OO-4tx"/>
                                             <outlet property="clothingItemImageView" destination="X2F-xo-K5c" id="RdH-CQ-bqm"/>
                                             <outlet property="dateLabel" destination="9ny-aj-2vI" id="cbf-9h-Qdk"/>
+                                            <outlet property="goToLink" destination="hW6-UT-yz0" id="pZs-TG-D27"/>
                                             <outlet property="nameLabel" destination="Gg8-Pi-Iyn" id="Xu0-sv-xkd"/>
                                         </connections>
                                     </tableViewCell>

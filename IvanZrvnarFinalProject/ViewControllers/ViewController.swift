@@ -12,10 +12,9 @@ class ViewController: UIViewController{
     
     //MARK: - Properties
     lazy var coreDataStack = CoreDataStack(modelName: "ClothingDataModel")
-    
+    var clothingItem = ClothingItem()
     // array of clothes
     var dropList = [ClothingItem]()
-    var clothingItem = ClothingItem()
     let today = Date()
     
     //date formatter for label
@@ -95,10 +94,18 @@ class ViewController: UIViewController{
     //MARK: - Methods
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
         if segue.identifier == "addItem"{
             if let destinationVC = segue.destination as? AddDropItemViewController{
                 destinationVC.coreDataStack = coreDataStack
                 destinationVC.droplist = dropList
+            }
+        } else if segue.identifier == "itemLink"{
+            if let desintationVC = segue.destination as? LinkViewController{
+                guard let selectedIndex = tableView.indexPathForSelectedRow else {return}
+                let itemToPass = tableDataSource.itemIdentifier(for: selectedIndex)
+                desintationVC.clothingItem = itemToPass!
             }
         }
         

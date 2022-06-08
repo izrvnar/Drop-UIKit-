@@ -13,6 +13,9 @@ class DropTableViewCell: UITableViewCell {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var clothingItemImageView: UIImageView!
+    @IBOutlet var goToLink: UIButton!
+    @IBOutlet var addToCloset: UIButton!
+    
     
 
     

@@ -9,12 +9,28 @@ import UIKit
 import WebKit
 
 class LinkViewController: UIViewController {
+    //MARK: - Properties
+    var clothingItem = ClothingItem()
+
+
+    
     //MARK: - Outlets
     @IBOutlet var webView: WKWebView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(clothingItem)
+        webView.load(clothingItem.urlLink!)
+        
+        
+        
+     
+        
+     
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -30,4 +46,14 @@ class LinkViewController: UIViewController {
     }
     */
 
+}
+
+
+extension WKWebView {
+    func load(_ urlString: String) {
+        if let url = URL(string: urlString) {
+            let request = URLRequest(url: url)
+            load(request)
+        }
+    }
 }
