@@ -16,9 +16,7 @@ class AddDropItemViewController: UIViewController {
     var coreDataStack : CoreDataStack!
     var selectedType = "Shoes"
     var clothingItem : ClothingItem?
-    
-    
-    
+ 
     
     //MARK: - Outlets
     @IBOutlet var nameInput: UITextField!
@@ -37,28 +35,23 @@ class AddDropItemViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         })
     }
-    
+    //MARK: - View did load
 
     override func viewDidLoad() {
         super.viewDidLoad()
         typePicker.dataSource = self
         typePicker.delegate = self
-
-
-
-    
         
-        
-        
-        
-        
+        if let clothingItem = clothingItem {
+            nameInput.text = clothingItem.name
+            brandInput.text = clothingItem.brand
+        }
 
-
-        // Do any additional setup after loading the view.
-    }
+    }//: View did load
     
     //MARK: - Methods
     func save(){
+
         let newDrop = ClothingItem(context: coreDataStack.managedContext)
         newDrop.name = nameInput.text ?? ""
         newDrop.dateReleased = dateInput.date
@@ -69,10 +62,27 @@ class AddDropItemViewController: UIViewController {
         //TODO: Add image and type to the data. The image extension is complete but not sure if working
         newDrop.type = selectedType
         
+        // TODO: set up notification
+        let content = UNMutableNotificationContent()
+        content.title = "\(newDrop.name ?? "Clothing Item") is dropping now"
+        content.subtitle = "Click notifiation to be sent to your saved link"
         
+        guard let dateReleased = newDrop.dateReleased else {return}
         
+        let calendar: Set<Calendar.Component> = [.month, .day, .year, .hour, .minute]
+        let date = Calendar.current.dateComponents(calendar, from: dateReleased)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "notification.date.\(UUID().uuidString)", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {
+            error in
+            if let error = error  {
+                print("Error with calendar timer - \(error.localizedDescription)")
+            }
+        })
 
-        
         coreDataStack.saveContext()
         
         droplist.append(newDrop)

@@ -78,9 +78,20 @@ class ViewController: UIViewController{
         tableView.delegate = self
       
         
-        // insert fetch clothing item function
+       // requesting notification from user
+        let center = UNUserNotificationCenter.current()
         
-
+        center.requestAuthorization(options: [.alert, .badge,.sound], completionHandler: {
+            granted, error in
+            
+            if granted {
+                print("Access has been granted")
+            } else {
+                print("Access has not been granted")
+            }
+        })
+    
+        
     }//: View did load
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +115,6 @@ class ViewController: UIViewController{
             if let destinationVC = segue.destination as? AddDropItemViewController{
                 destinationVC.coreDataStack = coreDataStack
                 destinationVC.droplist = dropList
-                destinationVC.clothingItem = clothingItem
             }
         } else if segue.identifier == "itemLink"{
             if let desintationVC = segue.destination as? LinkViewController{
@@ -113,9 +123,15 @@ class ViewController: UIViewController{
                 desintationVC.clothingItem = itemToPass!
             }
         } else if segue.identifier == "editItem"{
+            
+            guard let indexPath = tableView.indexPathForSelectedRow else {
+                return
+            }
+            
+            let passedItem = dropList[indexPath.row]
             if let destinationVC = segue.destination as? AddDropItemViewController {
                 destinationVC.coreDataStack = coreDataStack
-                destinationVC.clothingItem = clothingItem
+                destinationVC.clothingItem = passedItem
             }
         }
         
