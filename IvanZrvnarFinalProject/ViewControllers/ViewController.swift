@@ -31,11 +31,11 @@ class ViewController: UIViewController{
     
     
     //MARK: - Data Source
-    private lazy var tableDataSource = UITableViewDiffableDataSource<Int, ClothingItem>(tableView: tableView){
+    private lazy var tableDataSource = UITableViewDiffableDataSource<Int, ClothingItem>(tableView: tableView){ [self]
         tableView, indexPath, clothingItem in
         let cell = tableView.dequeueReusableCell(withIdentifier: "clothingItemCell", for: indexPath) as! DropTableViewCell
         cell.nameLabel.text = clothingItem.name
-        cell.dateLabel.text = "\(clothingItem.dateReleased ?? self.today)"
+        cell.dateLabel.text = (self.dateFormatter.string(from:clothingItem.dateReleased ?? today))
         
         
         
