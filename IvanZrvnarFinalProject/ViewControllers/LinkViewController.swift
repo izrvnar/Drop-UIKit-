@@ -8,9 +8,9 @@
 import UIKit
 import WebKit
 
-class LinkViewController: UIViewController {
+class LinkViewController: UIViewController, WKUIDelegate {
     //MARK: - Properties
-    var clothingItem = ClothingItem()
+    var clothingItem : ClothingItem!
 
 
     
@@ -18,22 +18,21 @@ class LinkViewController: UIViewController {
     @IBOutlet var webView: WKWebView!
     
 
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(clothingItem)
-        webView.load(clothingItem.urlLink!)
-        
-        
-        
-     
-        
-     
-        
-        
-
-        // Do any additional setup after loading the view.
+        guard let link = clothingItem.urlLink else { return }
+        guard let myURL = URL(string:link) else { return }
+        let myRequest = URLRequest(url: myURL)
+        webView.load(myRequest)
     }
+
+}
     
 
     /*
@@ -46,14 +45,6 @@ class LinkViewController: UIViewController {
     }
     */
 
-}
 
 
-extension WKWebView {
-    func load(_ urlString: String) {
-        if let url = URL(string: urlString) {
-            let request = URLRequest(url: url)
-            load(request)
-        }
-    }
-}
+

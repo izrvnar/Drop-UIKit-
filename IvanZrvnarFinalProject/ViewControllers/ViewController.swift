@@ -17,6 +17,9 @@ class ViewController: UIViewController{
     var dropList = [ClothingItem]()
     let today = Date()
     
+    var selectedIndexPath: IndexPath!
+
+    
     //date formatter for label
     var dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -38,7 +41,8 @@ class ViewController: UIViewController{
         cell.dateLabel.text = (self.dateFormatter.string(from:clothingItem.dateReleased ?? today))
         
         
-        
+        cell.delegate = self
+
         return cell
     }
     
@@ -100,12 +104,18 @@ class ViewController: UIViewController{
             if let destinationVC = segue.destination as? AddDropItemViewController{
                 destinationVC.coreDataStack = coreDataStack
                 destinationVC.droplist = dropList
+                destinationVC.clothingItem = clothingItem
             }
         } else if segue.identifier == "itemLink"{
             if let desintationVC = segue.destination as? LinkViewController{
                 guard let selectedIndex = tableView.indexPathForSelectedRow else {return}
                 let itemToPass = tableDataSource.itemIdentifier(for: selectedIndex)
                 desintationVC.clothingItem = itemToPass!
+            }
+        } else if segue.identifier == "editItem"{
+            if let destinationVC = segue.destination as? AddDropItemViewController {
+                destinationVC.coreDataStack = coreDataStack
+                destinationVC.clothingItem = clothingItem
             }
         }
         
@@ -140,6 +150,23 @@ extension ViewController: UITableViewDelegate{
         return config
     }
     
+}
+
+extension ViewController: CellTapDelegate{
+    func buttonTapped(cell: DropTableViewCell) {
+        guard let indexPath = self.tableView.indexPath(for: cell) else {
+            return
+        }
+               
+        let destinationVC = LinkViewController()
+        guard let itemToPass = tableDataSource.itemIdentifier(for: indexPath) else {
+            return
+        }
+        destinationVC.clothingItem = itemToPass
+        
+        navigationController?.pushViewController(destinationVC, animated: true)
+        
+    }
 }
 
 

@@ -15,6 +15,7 @@ class AddDropItemViewController: UIViewController {
     var typeResults = ["Shoes", "Shirt", "Pants", "Accessories", "Other"]
     var coreDataStack : CoreDataStack!
     var selectedType = "Shoes"
+    var clothingItem : ClothingItem?
     
     
     
@@ -42,6 +43,12 @@ class AddDropItemViewController: UIViewController {
         super.viewDidLoad()
         typePicker.dataSource = self
         typePicker.delegate = self
+
+
+
+    
+        
+        
         
         
         

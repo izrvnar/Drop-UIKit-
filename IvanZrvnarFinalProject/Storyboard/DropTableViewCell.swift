@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CellTapDelegate: AnyObject {
+    func buttonTapped(cell: DropTableViewCell)
+}
+
 class DropTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
@@ -15,6 +19,13 @@ class DropTableViewCell: UITableViewCell {
     @IBOutlet var clothingItemImageView: UIImageView!
     @IBOutlet var goToLink: UIButton!
     @IBOutlet var addToCloset: UIButton!
+    
+    weak var delegate: CellTapDelegate?
+
+    @IBAction func linkButtontapped(_ sender: Any) {
+        self.delegate?.buttonTapped(cell: self)
+
+    }
     
     
 
@@ -30,5 +41,7 @@ class DropTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }

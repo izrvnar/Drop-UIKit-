@@ -26,41 +26,6 @@
             </objects>
             <point key="canvasLocation" x="1183" y="68"/>
         </scene>
-        <!--LinkViewController-->
-        <scene sceneID="qN6-MN-NLe">
-            <objects>
-                <viewController title="LinkViewController" id="SsV-XL-NCs" customClass="LinkViewController" customModule="IvanZrvnarFinalProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0ki-QM-kee">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6m-8L-C7X">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="8dG-2k-9Zv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="8dG-2k-9Zv" firstAttribute="trailing" secondItem="s6m-8L-C7X" secondAttribute="trailing" id="3nl-Is-OW5"/>
-                            <constraint firstItem="s6m-8L-C7X" firstAttribute="leading" secondItem="8dG-2k-9Zv" secondAttribute="leading" id="Fwz-U7-5w8"/>
-                            <constraint firstItem="8dG-2k-9Zv" firstAttribute="bottom" secondItem="s6m-8L-C7X" secondAttribute="bottom" id="nCl-I4-udn"/>
-                            <constraint firstItem="s6m-8L-C7X" firstAttribute="top" secondItem="0ki-QM-kee" secondAttribute="topMargin" id="wx0-mE-7PN"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="9Qk-7E-sTS"/>
-                    <connections>
-                        <outlet property="webView" destination="s6m-8L-C7X" id="lJJ-HN-jbx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ART-4l-YWQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2868" y="-1368"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="vs7-yR-ejR">
             <objects>
@@ -106,7 +71,7 @@
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="bag.png"/>
                                                                     <connections>
-                                                                        <segue destination="SsV-XL-NCs" kind="show" identifier="itemLink" id="hZq-Wl-0W1"/>
+                                                                        <action selector="linkButtontapped:" destination="MtP-vv-0Un" eventType="touchUpInside" id="Kvu-nI-EDh"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jsl-6h-8ui" userLabel="addToClosetButton">
@@ -139,6 +104,7 @@
                                             <outlet property="dateLabel" destination="9ny-aj-2vI" id="cbf-9h-Qdk"/>
                                             <outlet property="goToLink" destination="hW6-UT-yz0" id="pZs-TG-D27"/>
                                             <outlet property="nameLabel" destination="Gg8-Pi-Iyn" id="Xu0-sv-xkd"/>
+                                            <segue destination="D2t-BX-UPL" kind="show" identifier="editItem" id="5Ca-B1-cRL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -352,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PO2-LM-lPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2901.449275362319" y="-608.03571428571422"/>
+            <point key="canvasLocation" x="3217" y="-625"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="AXH-Di-DMy">
@@ -392,6 +358,9 @@
             <point key="canvasLocation" x="1182.608695652174" y="-603.34821428571422"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5Ca-B1-cRL"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="bag.png" width="32" height="36"/>
         <image name="calender.png" width="36" height="38"/>
