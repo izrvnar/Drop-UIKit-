@@ -45,6 +45,10 @@ class AddDropItemViewController: UIViewController {
         if let clothingItem = clothingItem {
             nameInput.text = clothingItem.name
             brandInput.text = clothingItem.brand
+            dateInput.date = clothingItem.dateReleased!
+            linkInput.text = clothingItem.urlLink
+            noteInput.text = clothingItem.notes
+            selectedType = clothingItem.type!
         }
 
     }//: View did load

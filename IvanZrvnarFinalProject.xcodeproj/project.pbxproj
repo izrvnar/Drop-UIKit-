@@ -23,6 +23,8 @@
 		907E2AB5283B2282009740B1 /* bag.png in Resources */ = {isa = PBXBuildFile; fileRef = 907E2AB4283B2282009740B1 /* bag.png */; };
 		907E2AB7283C1E01009740B1 /* DropTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AB6283C1E01009740B1 /* DropTableViewCell.swift */; };
 		907E2AB9283C51B6009740B1 /* LinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907E2AB8283C51B6009740B1 /* LinkViewController.swift */; };
+		90BD8A6A28580440006DDCE0 /* ClosetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD8A6928580440006DDCE0 /* ClosetViewController.swift */; };
+		90BD8A6C285806C5006DDCE0 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BD8A6B285806C5006DDCE0 /* MenuTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		907E2AB4283B2282009740B1 /* bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bag.png; sourceTree = "<group>"; };
 		907E2AB6283C1E01009740B1 /* DropTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropTableViewCell.swift; sourceTree = "<group>"; };
 		907E2AB8283C51B6009740B1 /* LinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewController.swift; sourceTree = "<group>"; };
+		90BD8A6928580440006DDCE0 /* ClosetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetViewController.swift; sourceTree = "<group>"; };
+		90BD8A6B285806C5006DDCE0 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 				907E2AAE283A9BA1009740B1 /* AddDropItemViewController.swift */,
 				907E2A90283820BF009740B1 /* ViewController.swift */,
 				907E2AB8283C51B6009740B1 /* LinkViewController.swift */,
+				90BD8A6928580440006DDCE0 /* ClosetViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			children = (
 				907E2A92283820BF009740B1 /* Main.storyboard */,
 				907E2AB6283C1E01009740B1 /* DropTableViewCell.swift */,
+				90BD8A6B285806C5006DDCE0 /* MenuTableViewCell.swift */,
 				907E2A97283820C2009740B1 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
@@ -217,7 +223,9 @@
 				907E2A91283820BF009740B1 /* ViewController.swift in Sources */,
 				907E2AAA28383E3F009740B1 /* ClothingDataModel.xcdatamodeld in Sources */,
 				907E2AAF283A9BA1009740B1 /* AddDropItemViewController.swift in Sources */,
+				90BD8A6C285806C5006DDCE0 /* MenuTableViewCell.swift in Sources */,
 				907E2AB1283B16DE009740B1 /* CoreDataStack.swift in Sources */,
+				90BD8A6A28580440006DDCE0 /* ClosetViewController.swift in Sources */,
 				907E2A8D283820BF009740B1 /* AppDelegate.swift in Sources */,
 				907E2A8F283820BF009740B1 /* SceneDelegate.swift in Sources */,
 				907E2AB7283C1E01009740B1 /* DropTableViewCell.swift in Sources */,
@@ -367,6 +375,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4VZ7FS9KTH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IvanZrvnarFinalProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Drop;
@@ -395,6 +404,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4VZ7FS9KTH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IvanZrvnarFinalProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Drop;
