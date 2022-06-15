@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Closet View Controller-->
+        <!--Closet-->
         <scene sceneID="bJX-cj-2vd">
             <objects>
-                <viewController id="e0D-2A-QxI" customClass="ClosetViewController" customModule="IvanZrvnarFinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Closet" id="e0D-2A-QxI" customClass="ClosetViewController" customModule="IvanZrvnarFinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sf9-EK-1c4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,7 +135,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1937.68115942029" y="67.633928571428569"/>
+            <point key="canvasLocation" x="1993" y="68"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vs7-yR-ejR">
@@ -189,6 +189,9 @@
                                                                     <rect key="frame" x="80" y="0.0" width="60" height="50"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="star.png"/>
+                                                                    <connections>
+                                                                        <action selector="closetButtonTapped:" destination="MtP-vv-0Un" eventType="touchUpInside" id="wXG-Aw-lob"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -244,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kBr-UA-znU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1939" y="-608"/>
+            <point key="canvasLocation" x="1994" y="-603"/>
         </scene>
         <!--Add Drop Item View Controller-->
         <scene sceneID="V0Q-Eu-I34">

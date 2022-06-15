@@ -11,13 +11,14 @@ class ViewController: UIViewController{
     
     
     //MARK: - Properties
-    lazy var coreDataStack = CoreDataStack(modelName: "ClothingDataModel")
+    var coreDataStack : CoreDataStack!
     var clothingItem = ClothingItem()
     // array of clothes
     var dropList = [ClothingItem]()
     let today = Date()
+    var userCloset : [ClothingItem]!
     
-    var selectedIndexPath: IndexPath!
+
 
     
     //date formatter for label
@@ -169,6 +170,19 @@ extension ViewController: UITableViewDelegate{
 }
 
 extension ViewController: CellTapDelegate{
+    func closetButtonTapped(cell: DropTableViewCell) {
+        guard let indexPath = self.tableView.indexPath(for: cell) else {
+            return
+        }
+        guard let closetItem = tableDataSource.itemIdentifier(for: indexPath) else {
+            return
+        }
+        userCloset.append(closetItem)
+        
+        
+        
+    }
+    
     func buttonTapped(cell: DropTableViewCell) {
         guard let indexPath = self.tableView.indexPath(for: cell) else {
             return
@@ -183,6 +197,8 @@ extension ViewController: CellTapDelegate{
         navigationController?.pushViewController(destinationVC, animated: true)
         
     }
+
+    
 }
 
 

@@ -9,6 +9,7 @@ import UIKit
 
 protocol CellTapDelegate: AnyObject {
     func buttonTapped(cell: DropTableViewCell)
+    func closetButtonTapped(cell: DropTableViewCell)
 }
 
 class DropTableViewCell: UITableViewCell {
@@ -25,6 +26,9 @@ class DropTableViewCell: UITableViewCell {
     @IBAction func linkButtontapped(_ sender: Any) {
         self.delegate?.buttonTapped(cell: self)
 
+    }
+    @IBAction func closetButtonTapped(_ sender: Any) {
+        self.delegate?.closetButtonTapped(cell: self)
     }
     
     

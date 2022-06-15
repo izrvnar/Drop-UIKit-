@@ -7,7 +7,15 @@
 
 import UIKit
 
-class ClosetViewController: UIViewController {
+class ClosetViewController: UIViewController, CellTapDelegate {
+    func closetButtonTapped(cell: DropTableViewCell) {
+        
+    }
+    
+    func buttonTapped(cell: DropTableViewCell) {
+        
+    }
+    
     
     //MARK: - Properties
     var menuOptions:[menuOption] = [
@@ -18,10 +26,63 @@ class ClosetViewController: UIViewController {
         menuOption(title: "Accessories"),
         menuOption(title: "Other")
     ]
+    let today = Date()
+
     
+    //date formatter for label
+    var dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.timeStyle = .none
+        df.doesRelativeDateFormatting = true
+        df.dateStyle = .medium
+        return df
+    }()
+    
+        // properties for menu
     var displayMenu = false
     let screen = UIScreen.main.bounds
     var home = CGAffineTransform()
+    
+    // creating the user closet
+    var userCloset = [ClothingItem]()
+    var coreDataStack : CoreDataStack!
+    
+    //MARK: - Data Source
+    private lazy var tableDataSource = UITableViewDiffableDataSource<Int, ClothingItem>(tableView: closetTableView){ [self]
+        tableView, indexPath, clothingItem in
+        let cell = tableView.dequeueReusableCell(withIdentifier: "clothingItemCell", for: indexPath) as! DropTableViewCell
+        cell.nameLabel.text = clothingItem.name
+        cell.dateLabel.text = (self.dateFormatter.string(from:clothingItem.dateReleased ?? today))
+        cell.layer.cornerRadius = 40
+        
+        
+        cell.delegate = self
+
+        return cell
+    }
+    
+    func createDataSnapShot(){
+        var snapshot = NSDiffableDataSourceSnapshot<Int, ClothingItem>()
+        snapshot.appendSections([.max])
+        snapshot.appendItems(userCloset, toSection: .max)
+        tableDataSource.apply(snapshot)
+    }
+    
+    func fetchCloset(){
+        let fetchRequest  = ClothingItem.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateReleased", ascending: true)]
+        do{
+            userCloset = try coreDataStack.managedContext.fetch(fetchRequest)
+        }catch {
+            print("There was an error fetching the droplist: \(error.localizedDescription)")
+
+        }
+        DispatchQueue.main.async {
+            self.createDataSnapShot()
+        }
+    }
+
+
     
     
     
@@ -57,6 +118,7 @@ class ClosetViewController: UIViewController {
     }
     
     
+    //MARK: - View did load
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +136,7 @@ class ClosetViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // add fetch closet
+        fetchCloset()
         closetTableView.reloadData()
     }
     

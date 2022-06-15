@@ -9,8 +9,9 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
-    var coreDataStack = CoreDataStack(modelName: "ClothingItem")
+    var coreDataStack = CoreDataStack(modelName: "ClothingDataModel")
     var savedDropList = [ClothingItem]()
+    var userCloset = [ClothingItem]()
 
     var window: UIWindow?
 
@@ -27,11 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let firstTabNav = rootVC.viewControllers?[0] as? UINavigationController,
               let secondTabNav = rootVC.viewControllers?[1] as? UINavigationController,
               let mainVC = firstTabNav.viewControllers[0] as? ViewController,
-              let secondVC = secondTabNav.viewControllers[0] as? AddDropItemViewController else {return}
+              let secondVC = secondTabNav.viewControllers[0] as?ClosetViewController
+        else {return}
         mainVC.coreDataStack = coreDataStack
         mainVC.dropList = savedDropList
+        mainVC.userCloset = userCloset
         secondVC.coreDataStack = coreDataStack
-        secondVC.droplist = savedDropList
+        secondVC.userCloset = userCloset
+
         
         
         
