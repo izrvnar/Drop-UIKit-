@@ -152,23 +152,23 @@ class ClosetViewController: UIViewController, CellTapDelegate {
     */
     
     //MARK: - Methods
-    func showMenu(){
-        self.closetTableView.layer.cornerRadius = 40
-        // self.viewBG.layer.cornerRadius = self.containerView.layer.cornerRadius
-        let x = screen.width * 0.8
-        let originalTransform = self.closetTableView.transform
-        let scaledTransform = originalTransform.scaledBy(x: 0.8, y: 0.8)
-            let scaledAndTranslatedTransform = scaledTransform.translatedBy(x: x, y: 0)
-            UIView.animate(withDuration: 0.7, animations: {
-                self.closetTableView.transform = scaledAndTranslatedTransform
-            })
-        
-    }
+    func showMenu() {
+            
+            self.closetTableView.layer.cornerRadius = 40
+            // self.viewBG.layer.cornerRadius = self.containerView.layer.cornerRadius
+            let x = screen.width * 0.8
+            let originalTransform = self.closetTableView.transform
+            let scaledTransform = originalTransform.scaledBy(x: 0.8, y: 0.8)
+                let scaledAndTranslatedTransform = scaledTransform.translatedBy(x: x, y: 0)
+                UITableView.animate(withDuration: 0.7, animations: {
+                    self.closetTableView.transform = scaledAndTranslatedTransform
+                })
+        }
     
     func hideMenu() {
-        
-            UIView.animate(withDuration: 0.7, animations: {
-                
+
+        UITableView.animate(withDuration: 0.7, animations: {
+
                 self.closetTableView.transform = self.home
                 self.closetTableView.layer.cornerRadius = 0
             })
@@ -190,12 +190,12 @@ extension ClosetViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let indexPath = tableView.indexPathForSelectedRow {
+        if let indexPath = menuTableView.indexPathForSelectedRow {
             let currentCell = (tableView.cellForRow(at: indexPath) ?? UITableViewCell()) as UITableViewCell
             
             currentCell.alpha = 0.5
-            UIView.animate(withDuration: 1, animations: {
-                currentCell.alpha = 1
+            UITableView.animate(withDuration: 1, animations: {
+            currentCell.alpha = 1
                 
             })
             

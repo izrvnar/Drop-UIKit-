@@ -29,7 +29,7 @@ class AddDropItemViewController: UIViewController {
     @IBAction func saveItem(_ sender: Any) {
         save()
         
-        let delay = 1.5
+        let delay = 1.0
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
             self.navigationController?.popViewController(animated: true)
@@ -55,6 +55,8 @@ class AddDropItemViewController: UIViewController {
     
     //MARK: - Methods
     func save(){
+        
+        if clothingItem == nil{
 
         let newDrop = ClothingItem(context: coreDataStack.managedContext)
         newDrop.name = nameInput.text ?? ""
@@ -91,7 +93,30 @@ class AddDropItemViewController: UIViewController {
         
         droplist.append(newDrop)
     
-    }
+        } else{
+            
+            clothingItem?.name = nameInput.text
+            clothingItem?.brand = brandInput.text
+            clothingItem?.dateReleased = dateInput.date
+            clothingItem?.urlLink = linkInput.text
+            clothingItem?.notes = noteInput.text
+            
+            droplist.append(clothingItem!)
+            coreDataStack.saveContext()
+
+                
+                
+            }
+ 
+                
+            }
+            
+            
+            
+        
+        
+        
+}//:
     
     
     
@@ -107,7 +132,7 @@ class AddDropItemViewController: UIViewController {
     }
     */
 
-}
+
 
 //MARK: -Extensions
 
