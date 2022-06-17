@@ -37,7 +37,6 @@ class AddDropItemViewController: UIViewController {
     @IBOutlet var imageInput: UIImageView!
     @IBAction func saveItem(_ sender: Any) {
         save()
-        
         let delay = 1.0
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: {
@@ -114,9 +113,13 @@ class AddDropItemViewController: UIViewController {
                 }
             })
             
+            // adding alert that the item has been saved
+            showErrorAlert(withMessage: "has been added to your droplist", withTitle: "\(newDrop.name ?? "Clothing Item")")
+            
             coreDataStack.saveContext()
             
             droplist.append(newDrop)
+            
             
         } else{
             
@@ -138,6 +141,9 @@ class AddDropItemViewController: UIViewController {
                 }
             }
             
+            //alert that the item has been updated
+            showErrorAlert(withMessage: "has been updated", withTitle: "\(clothingItem?.name ?? "Clothing Item")")
+            
             // adding to the droplist
             droplist.append(clothingItem!)
             coreDataStack.saveContext()
@@ -146,8 +152,8 @@ class AddDropItemViewController: UIViewController {
         
     }
     // alert method
-    func showErrorAlert(withMessage message: String){
-        let alert = UIAlertController(title: "Missing Information", message: message , preferredStyle: .alert)
+    func showErrorAlert(withMessage message: String, withTitle title: String){
+        let alert = UIAlertController(title: title, message: message , preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(alertAction)
         

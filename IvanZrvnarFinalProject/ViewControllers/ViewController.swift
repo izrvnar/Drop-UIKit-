@@ -54,7 +54,6 @@ class ViewController: UIViewController{
             cell.clothingItemImageView.image = fetchImage(withIdentifier: clothingImage)
         }
         
-        
         cell.delegate = self
 
         return cell

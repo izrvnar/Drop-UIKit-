@@ -127,7 +127,6 @@ class ClosetViewController: UIViewController, CellTapDelegate {
         menuTableView.dataSource = self
         menuTableView.backgroundColor = .clear
         
-        closetTableView.delegate = self
 
         
         
@@ -191,7 +190,7 @@ extension ClosetViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let indexPath = menuTableView.indexPathForSelectedRow {
-            let currentCell = (tableView.cellForRow(at: indexPath) ?? UITableViewCell()) as UITableViewCell
+            let currentCell = (menuTableView.cellForRow(at: indexPath) ?? UITableViewCell()) as UITableViewCell
             
             currentCell.alpha = 0.5
             UITableView.animate(withDuration: 1, animations: {
