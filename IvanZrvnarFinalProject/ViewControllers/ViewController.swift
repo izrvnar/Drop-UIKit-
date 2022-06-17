@@ -18,6 +18,15 @@ class ViewController: UIViewController{
     let today = Date()
     var userCloset : [ClothingItem]!
     
+    // document library property
+    var documentLibrary: URL? {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        print(paths[0])
+        
+        return paths[0]
+    }
+    
 
 
     
@@ -40,6 +49,10 @@ class ViewController: UIViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "clothingItemCell", for: indexPath) as! DropTableViewCell
         cell.nameLabel.text = clothingItem.name
         cell.dateLabel.text = (self.dateFormatter.string(from:clothingItem.dateReleased ?? today))
+        
+        if let clothingImage = clothingItem.image{
+            cell.clothingItemImageView.image = fetchImage(withIdentifier: clothingImage)
+        }
         
         
         cell.delegate = self
@@ -137,6 +150,15 @@ class ViewController: UIViewController{
         }
         
     }
+    
+    // fetch image
+    func fetchImage(withIdentifier id: String) -> UIImage?{
+        if let imagePath = documentLibrary?.appendingPathComponent(id), let imageFromDisk = UIImage(contentsOfFile: imagePath.path){
+            return imageFromDisk
+    }
+        return nil
+}
+
     
 }//: View Controller
 
