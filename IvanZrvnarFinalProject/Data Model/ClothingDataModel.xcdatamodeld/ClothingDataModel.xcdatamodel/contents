@@ -3,12 +3,13 @@
     <entity name="ClothingItem" representedClassName="ClothingItem" syncable="YES" codeGenerationType="class">
         <attribute name="brand" attributeType="String"/>
         <attribute name="dateReleased" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="notes" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
         <attribute name="urlLink" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ClothingItem" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="ClothingItem" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

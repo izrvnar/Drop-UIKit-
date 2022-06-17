@@ -390,6 +390,7 @@
                                             <constraint firstItem="Mug-EV-PbC" firstAttribute="top" secondItem="CS9-sJ-Egb" secondAttribute="top" id="HaK-jQ-G2O"/>
                                             <constraint firstAttribute="trailing" secondItem="Mug-EV-PbC" secondAttribute="trailing" id="IyN-VV-ri1"/>
                                             <constraint firstAttribute="bottom" secondItem="Mug-EV-PbC" secondAttribute="bottom" id="MRS-Fv-xIJ"/>
+                                            <constraint firstItem="FLx-NG-0uD" firstAttribute="width" secondItem="CS9-sJ-Egb" secondAttribute="width" multiplier="0.960212" id="uCI-CR-yGb"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -431,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PO2-LM-lPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3217" y="-625"/>
+            <point key="canvasLocation" x="3215.9420289855075" y="-625.44642857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="AXH-Di-DMy">
