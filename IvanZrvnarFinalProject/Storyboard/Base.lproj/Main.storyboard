@@ -99,6 +99,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XUH-ch-Apu"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="PDV-02-N2Z" firstAttribute="top" secondItem="XUH-ch-Apu" secondAttribute="top" id="5Bu-7e-31m"/>
@@ -112,7 +113,6 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="XOd-iT-hYv" appends="YES" id="2Fp-Lb-oxc"/>
-                            <outletCollection property="gestureRecognizers" destination="zs1-bq-Ljw" appends="YES" id="ZAr-7l-k7z"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="aG8-j6-NXU"/>
@@ -128,11 +128,6 @@
                         <action selector="showMenu:" destination="e0D-2A-QxI" id="2sC-Yv-qFm"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <tapGestureRecognizer id="zs1-bq-Ljw">
-                    <connections>
-                        <action selector="hideMenu:" destination="e0D-2A-QxI" id="7Nl-lT-bLj"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1993" y="68"/>
         </scene>
@@ -487,6 +482,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zda-8h-P9p">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

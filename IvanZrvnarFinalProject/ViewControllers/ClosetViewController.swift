@@ -53,8 +53,7 @@ class ClosetViewController: UIViewController, CellTapDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "clothingItemCell", for: indexPath) as! DropTableViewCell
         cell.nameLabel.text = clothingItem.name
         cell.dateLabel.text = (self.dateFormatter.string(from:clothingItem.dateReleased ?? today))
-        cell.layer.cornerRadius = 40
-        
+       
         
         cell.delegate = self
 
@@ -101,7 +100,6 @@ class ClosetViewController: UIViewController, CellTapDelegate {
             showMenu()
             displayMenu = true
         }
-        
     }
     
     @IBAction func hideMenu(_ sender: Any) {
@@ -198,7 +196,13 @@ extension ClosetViewController: UITableViewDelegate, UITableViewDataSource{
                 
             })
             
+                if displayMenu == true{
+                    hideMenu()
+                    displayMenu = false
+                }
+         
             
+
         }
         
     }
