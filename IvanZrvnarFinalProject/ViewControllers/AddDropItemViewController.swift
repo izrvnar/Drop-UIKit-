@@ -35,6 +35,8 @@ class AddDropItemViewController: UIViewController {
     @IBOutlet var linkInput: UITextField!
     @IBOutlet var noteInput: UITextField!
     @IBOutlet var imageInput: UIImageView!
+    @IBOutlet var scrollView: UIScrollView!
+    
     @IBAction func saveItem(_ sender: Any) {
         save()
         let delay = 1.0
@@ -49,6 +51,12 @@ class AddDropItemViewController: UIViewController {
         super.viewDidLoad()
         typePicker.dataSource = self
         typePicker.delegate = self
+        
+        // text field delegates
+        nameInput.delegate = self
+        brandInput.delegate = self
+        linkInput.delegate = self
+        noteInput.delegate = self
         
         if let clothingItem = clothingItem {
             nameInput.text = clothingItem.name
@@ -68,6 +76,13 @@ class AddDropItemViewController: UIViewController {
         let doubleTap = UITapGestureRecognizer(target: self, action: #selector(cameraDoubleTapped))
         doubleTap.numberOfTapsRequired = 2
         imageInput.addGestureRecognizer(doubleTap)
+        
+        
+        // watching for keyboard
+        // setting the keyboard to dismiss and adjust depending on contentet selected
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
     }//: View did load
     
@@ -199,6 +214,32 @@ class AddDropItemViewController: UIViewController {
         }
     }
     
+    // adjust keyboard method
+    @objc func adjustForKeyboard(notification: Notification){
+        //get the user info key to retrieve the keyboard’s frame at the end of its animation.
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        //get the rectangular representation of the keyboard frame
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        //this will match the keyboard frame the view's co-ordinate system - this will handle the situation where the use is in landscape
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        //remember this is being called when two conditions are observed.  If this is a situation where the keyboard is hidingand appearing - first if it is hiding
+        if notification.name == UIResponder.keyboardWillHideNotification{
+            //set the inset back to nothing
+            scrollView.contentInset = .zero
+        } else {
+            //set the inset to the height of the keyboard - minus the bottom safe area value
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+        
+        //without this, the scroll indicator will disappear under the keyboard
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        
+        
+    }
+    
+    
     
     
     
@@ -236,11 +277,18 @@ extension AddDropItemViewController: UIPickerViewDelegate{
 
 extension AddDropItemViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nameInput.resignFirstResponder()
-        brandInput.resignFirstResponder()
-        linkInput.resignFirstResponder()
-        noteInput.resignFirstResponder()
-        return true
+        switch textField{
+        case nameInput:
+            brandInput.becomeFirstResponder()
+        case brandInput:
+            linkInput.becomeFirstResponder()
+        case linkInput:
+            noteInput.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return false
+
     }
 }
 

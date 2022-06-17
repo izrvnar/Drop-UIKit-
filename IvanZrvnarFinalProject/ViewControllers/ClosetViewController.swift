@@ -7,16 +7,17 @@
 
 import UIKit
 
-class ClosetViewController: UIViewController, CellTapDelegate {
-    func closetButtonTapped(cell: DropTableViewCell) {
-        
+class ClosetViewController: UIViewController{
+    
+    // enum for sorting
+    enum TableSort: String {
+        case all
+        case shoes
+        case shirts
+        case pants
+        case accessories
+        case other
     }
-    
-    func buttonTapped(cell: DropTableViewCell) {
-        
-    }
-    
-    
     //MARK: - Properties
     var menuOptions:[menuOption] = [
         menuOption(title: "All"),
@@ -27,7 +28,18 @@ class ClosetViewController: UIViewController, CellTapDelegate {
         menuOption(title: "Other")
     ]
     let today = Date()
-
+    
+    // document library property
+    var documentLibrary: URL? {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        print(paths[0])
+        
+        return paths[0]
+    }
+    
+    
+    
     
     //date formatter for label
     var dateFormatter: DateFormatter = {
@@ -38,7 +50,7 @@ class ClosetViewController: UIViewController, CellTapDelegate {
         return df
     }()
     
-        // properties for menu
+    // properties for menu
     var displayMenu = false
     let screen = UIScreen.main.bounds
     var home = CGAffineTransform()
@@ -46,6 +58,9 @@ class ClosetViewController: UIViewController, CellTapDelegate {
     // creating the user closet
     var userCloset = [ClothingItem]()
     var coreDataStack : CoreDataStack!
+    // default sort order
+    var sortOrder: TableSort = .all
+    
     
     //MARK: - Data Source
     private lazy var tableDataSource = UITableViewDiffableDataSource<Int, ClothingItem>(tableView: closetTableView){ [self]
@@ -53,10 +68,13 @@ class ClosetViewController: UIViewController, CellTapDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "clothingItemCell", for: indexPath) as! DropTableViewCell
         cell.nameLabel.text = clothingItem.name
         cell.dateLabel.text = (self.dateFormatter.string(from:clothingItem.dateReleased ?? today))
-       
         
-        cell.delegate = self
-
+        // fetching image 
+        if let clothingImage = clothingItem.image{
+            cell.clothingItemImageView.image = fetchImage(withIdentifier: clothingImage)
+        }
+        
+        
         return cell
     }
     
@@ -74,21 +92,12 @@ class ClosetViewController: UIViewController, CellTapDelegate {
             userCloset = try coreDataStack.managedContext.fetch(fetchRequest)
         }catch {
             print("There was an error fetching the droplist: \(error.localizedDescription)")
-
+            
         }
         DispatchQueue.main.async {
             self.createDataSnapShot()
         }
     }
-
-
-    
-    
-    
-
-    
-    
-    
     
     //MARK: - Outlets
     
@@ -101,23 +110,14 @@ class ClosetViewController: UIViewController, CellTapDelegate {
             displayMenu = true
         }
     }
-    
-    @IBAction func hideMenu(_ sender: Any) {
-        if displayMenu == true{
-            hideMenu()
-            displayMenu = false
-        }
-        
-    }
 
-    
     struct menuOption{
         var title = String()
     }
     
     
     //MARK: - View did load
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -125,10 +125,10 @@ class ClosetViewController: UIViewController, CellTapDelegate {
         menuTableView.dataSource = self
         menuTableView.backgroundColor = .clear
         
-
-        
+        closetTableView.delegate = self
         
         home = closetTableView.transform
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -137,43 +137,60 @@ class ClosetViewController: UIViewController, CellTapDelegate {
         closetTableView.reloadData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //MARK: - Methods
     func showMenu() {
-            
-            self.closetTableView.layer.cornerRadius = 40
-            // self.viewBG.layer.cornerRadius = self.containerView.layer.cornerRadius
-            let x = screen.width * 0.8
-            let originalTransform = self.closetTableView.transform
-            let scaledTransform = originalTransform.scaledBy(x: 0.8, y: 0.8)
-                let scaledAndTranslatedTransform = scaledTransform.translatedBy(x: x, y: 0)
-                UITableView.animate(withDuration: 0.7, animations: {
-                    self.closetTableView.transform = scaledAndTranslatedTransform
-                })
-        }
+        
+        self.closetTableView.layer.cornerRadius = 40
+        // self.viewBG.layer.cornerRadius = self.containerView.layer.cornerRadius
+        let x = screen.width * 0.8
+        let originalTransform = self.closetTableView.transform
+        let scaledTransform = originalTransform.scaledBy(x: 0.8, y: 0.8)
+        let scaledAndTranslatedTransform = scaledTransform.translatedBy(x: x, y: 0)
+        UITableView.animate(withDuration: 0.7, animations: {
+            self.closetTableView.transform = scaledAndTranslatedTransform
+        })
+    }
     
     func hideMenu() {
-
+        
         UITableView.animate(withDuration: 0.7, animations: {
-
-                self.closetTableView.transform = self.home
-                self.closetTableView.layer.cornerRadius = 0
-            })
+            
+            self.closetTableView.transform = self.home
+            self.closetTableView.layer.cornerRadius = 0
+        })
     }
-
+    
+    // sort table function
+    func sortTable(){
+        switch sortOrder {
+        case .all:
+            userCloset.sort(by: {$0.dateReleased! > $1.dateReleased!})
+        case .shoes:
+            userCloset = userCloset.filter{$0.type == "Shoes"}
+        case .shirts:
+            userCloset = userCloset.filter{$0.type == "Shirts"}
+        case .pants:
+            userCloset = userCloset.filter{$0.type == "Pants"}
+        case .accessories:
+            userCloset = userCloset.filter{$0.type == "Accessories"}
+        case .other:
+            userCloset = userCloset.filter{$0.type == "Other"}
+        }
+    }
+    
+    // fetch image method
+    func fetchImage(withIdentifier id: String) -> UIImage?{
+        if let imagePath = documentLibrary?.appendingPathComponent(id), let imageFromDisk = UIImage(contentsOfFile: imagePath.path){
+            return imageFromDisk
+    }
+        return nil
+}
+    
 }//: end of view controller
 
 extension ClosetViewController: UITableViewDelegate, UITableViewDataSource{
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuOptions.count
     }
@@ -189,24 +206,24 @@ extension ClosetViewController: UITableViewDelegate, UITableViewDataSource{
         
         if let indexPath = menuTableView.indexPathForSelectedRow {
             let currentCell = (menuTableView.cellForRow(at: indexPath) ?? UITableViewCell()) as UITableViewCell
+            sortTable()
             
             currentCell.alpha = 0.5
             UITableView.animate(withDuration: 1, animations: {
-            currentCell.alpha = 1
+                currentCell.alpha = 1
                 
             })
             
-                if displayMenu == true{
-                    hideMenu()
-                    displayMenu = false
-                }
-         
-            
+            if displayMenu == true{
+                hideMenu()
+                displayMenu = false
+            }
 
         }
         
     }
     
-    
 }
+
+
 
