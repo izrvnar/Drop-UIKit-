@@ -66,6 +66,9 @@ class AddDropItemViewController: UIViewController {
             noteInput.text = clothingItem.notes
             selectedType = clothingItem.type!
             
+            indexPicker()
+            
+            // setting the image 
             if let imageString = clothingItem.image{
                 imageInput.image = fetchImage(withIdentifier: imageString)
             }
@@ -144,6 +147,11 @@ class AddDropItemViewController: UIViewController {
             clothingItem?.dateReleased = dateInput.date
             clothingItem?.urlLink = linkInput.text
             clothingItem?.notes = noteInput.text
+            clothingItem?.type = selectedType
+            
+            
+            
+            
             
             // update the image
             if let image = imageInput.image{
@@ -239,6 +247,15 @@ class AddDropItemViewController: UIViewController {
         
     }
     
+    func indexPicker(){
+        for(index, element) in typeResults.enumerated(){
+            if selectedType == element{
+                typePicker.selectRow(index, inComponent: 0, animated: true)
+            }
+        }
+    }
+    
+    
     
     
     
@@ -272,6 +289,7 @@ extension AddDropItemViewController: UIPickerViewDelegate{
         selectedType = typeResults[row]
         print(selectedType)
     }
+    
     
 }
 
