@@ -60,6 +60,8 @@ class ClosetViewController: UIViewController{
     var coreDataStack : CoreDataStack!
     // default sort order
     var sortOrder: TableSort = .all
+    //create a new property to load all the sorted items
+    var sortedTable = [ClothingItem]()
     
     
     //MARK: - Data Source
@@ -69,7 +71,7 @@ class ClosetViewController: UIViewController{
         cell.nameLabel.text = clothingItem.name
         cell.dateLabel.text = (self.dateFormatter.string(from:clothingItem.dateReleased ?? today))
         
-        // fetching image 
+        // fetching image
         if let clothingImage = clothingItem.image{
             cell.clothingItemImageView.image = fetchImage(withIdentifier: clothingImage)
         }
@@ -81,7 +83,8 @@ class ClosetViewController: UIViewController{
     func createDataSnapShot(){
         var snapshot = NSDiffableDataSourceSnapshot<Int, ClothingItem>()
         snapshot.appendSections([.max])
-        snapshot.appendItems(userCloset, toSection: .max)
+        //display the sorted table results
+        snapshot.appendItems(sortedTable, toSection: .max)
         tableDataSource.apply(snapshot)
     }
     
@@ -90,6 +93,8 @@ class ClosetViewController: UIViewController{
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateReleased", ascending: true)]
         do{
             userCloset = try coreDataStack.managedContext.fetch(fetchRequest)
+            //copy the fetched results into the sorted array - this will be the actual data for this view
+            sortedTable = userCloset
         }catch {
             print("There was an error fetching the droplist: \(error.localizedDescription)")
             
@@ -163,19 +168,20 @@ class ClosetViewController: UIViewController{
     
     // sort table function
     func sortTable(){
+        //determine the sort order and load all of the sorted results into the sorted table
         switch sortOrder {
         case .all:
-            userCloset.sort(by: {$0.dateReleased! > $1.dateReleased!})
+            sortedTable = userCloset.sorted(by: {$0.dateReleased! > $1.dateReleased!})
         case .shoes:
-            userCloset = userCloset.filter{$0.type == "Shoes"}
+            sortedTable = userCloset.filter{$0.type == "Shoes"}
         case .shirts:
-            userCloset = userCloset.filter{$0.type == "Shirts"}
+            sortedTable = userCloset.filter{$0.type == "Shirt"}
         case .pants:
-            userCloset = userCloset.filter{$0.type == "Pants"}
+            sortedTable = userCloset.filter{$0.type == "Pants"}
         case .accessories:
-            userCloset = userCloset.filter{$0.type == "Accessories"}
+            sortedTable = userCloset.filter{$0.type == "Accessories"}
         case .other:
-            userCloset = userCloset.filter{$0.type == "Other"}
+            sortedTable = userCloset.filter{$0.type == "Other"}
         }
     }
     
@@ -203,16 +209,36 @@ extension ClosetViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        //make sure we are selecting in the menutableview, not the closet tableview since BOTH will call this method.
+        if tableView == menuTableView {
         if let indexPath = menuTableView.indexPathForSelectedRow {
             let currentCell = (menuTableView.cellForRow(at: indexPath) ?? UITableViewCell()) as UITableViewCell
+            //check to see what row we selected and set the specified sort order
+            switch indexPath.row {
+            case 0:
+                sortOrder = .all
+            case 1:
+                sortOrder = .shoes
+            case 2:
+                sortOrder = .shirts
+            case 3:
+                sortOrder = .pants
+            case 4:
+                sortOrder = .accessories
+            default:
+                sortOrder = .other
+            }
+            //sort the table
             sortTable()
+            //update the snapshot so the table reloads with just the sorted items
+            createDataSnapShot()
             
             currentCell.alpha = 0.5
             UITableView.animate(withDuration: 1, animations: {
                 currentCell.alpha = 1
                 
             })
+        }
             
             if displayMenu == true{
                 hideMenu()
